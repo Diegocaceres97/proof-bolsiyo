@@ -1,0 +1,41 @@
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <button
+      class="btn btn-outline-secondary dropdown-toggle"
+      type="button"
+      data-toggle="dropdown"
+      aria-haspopup="true"
+      aria-expanded="false"
+    >
+      Categorías
+    </button>
+    <div class="dropdown-menu">
+      <a
+        class="dropdown-item"
+        *ngFor="let category of categorias; index as i"
+        (click)="getSelectedDropdown(i)"
+        >{{ category | titlecase }}</a
+      >
+    </div>
+  </div>
+  <input
+    type="text"
+    #inputValue
+    class="form-control"
+    aria-label="Text input with dropdown button"
+    style="height: 3rem"
+    (keydown.enter)="valueSearchImage(inputValue.value)"
+  />
+  <button class="btn btn-primary p-2" (click)="valueSearchImage(inputValue.value)">
+    Search
+  </button>
+</div>
+<div type="button" class="btn btn-secondary" (click)="deleteCategory()" *ngIf="categoryQuery"  title="Eliminar">
+  Categoria: {{ categoryQuery | titlecase }}
+</div>
+
+<h1 *ngIf="imagesSearched" >
+
+  <p *ngFor="let images of imagesSearched | pagination:page"> jeje</p>
+
+</h1>

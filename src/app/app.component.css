@@ -1,0 +1,12 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container_elements{
+    display: grid;
+    gap:1rem;
+    grid-auto-flow: dense;
+    grid-auto-rows: 15rem;
+    grid-template-columns: repeat(auto-fill, minmax(20rem,1fr));
+}
