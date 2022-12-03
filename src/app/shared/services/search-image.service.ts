@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { DataCard } from '../interfaces/data-card.interface';
 
 @Injectable({
@@ -21,13 +21,5 @@ export class SearchImageService {
           searchQuery ? searchQuery : ''
         }&category=${categoryQuery}`;
     return this.http.get<DataCard>(query);
-  }
-
-  private imageInformation(data: DataCard[]) {
-    for (const iterator of data) {
-      iterator;
-    }
-
-    return [];
   }
 }

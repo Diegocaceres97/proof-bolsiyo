@@ -2,9 +2,7 @@ import {
   Component,
   EventEmitter,
   Input,
-  OnChanges,
   Output,
-  SimpleChanges,
 } from '@angular/core';
 import { Hit } from 'src/app/shared/interfaces/data-card.interface';
 import { SearchImageService } from 'src/app/shared/services/search-image.service';
