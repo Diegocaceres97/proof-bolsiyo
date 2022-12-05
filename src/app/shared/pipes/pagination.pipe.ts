@@ -6,10 +6,13 @@ import { Hit } from '../interfaces/data-card.interface';
 })
 export class PaginationPipe implements PipeTransform {
   transform(images: Hit[], page: number = 0): Hit[] {
-    const nextPage = page+5;
-    if(nextPage <= images.length){
-      return images.slice(page,nextPage);
-    }else{
+    const listImagesLength = images.length;
+    const nextPage = page + 4;
+    if (nextPage <= listImagesLength) {
+      return images.slice(page, nextPage);
+    } else if (listImagesLength > 0) {
+      return images.slice(page, nextPage);
+    } else {
       return [];
     }
   }
