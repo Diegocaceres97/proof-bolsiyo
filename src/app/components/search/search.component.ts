@@ -1,19 +1,15 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  Output,
-} from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Hit } from 'src/app/shared/interfaces/data-card.interface';
 import { SearchImageService } from 'src/app/shared/services/search-image.service';
+import { loadedImages } from 'src/app/state/actions/images.actions';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
 })
 export class SearchComponent {
-  @Output() PageNumber = new EventEmitter<number>();
-  @Input() page!: number;
+  @Output() pageReset = new EventEmitter<number>();
   public categorias = [
     'science',
     'education',
@@ -23,12 +19,14 @@ export class SearchComponent {
     'buildings',
   ];
 
-  public pageTotal: number = 0;
   public imagesSearched!: Hit[];
   private searchQuery!: string;
   public categoryQuery!: string;
 
-  constructor(private searchService: SearchImageService) {}
+  constructor(
+    private searchService: SearchImageService,
+    private store: Store<any>
+  ) {}
 
   valueSearchImage(searchQuery: string) {
     if (!searchQuery) {
@@ -58,10 +56,10 @@ export class SearchComponent {
 
     this.searchService
       .searchImage(this.searchQuery, this.categoryQuery)
-      .subscribe((data) => {
-        this.imagesSearched = data.hits;
-        this.pageTotal = data.hits.length;
-        this.PageNumber.emit(this.pageTotal);
+      .subscribe((images) => {
+        this.store.dispatch(loadedImages({ images }));
+        this.imagesSearched = images.hits;
       });
+    this.pageReset.emit(0);
   }
 }

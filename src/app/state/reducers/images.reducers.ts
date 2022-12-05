@@ -12,7 +12,8 @@ export const imagesReducer = createReducer(
     on(loadImages, (state) => {
         return {...state, loading: true}
     }),
-    on(loadedImages, (state, {images}) => {
+    on(loadedImages, (state, {images} ) => {
+        //console.log(item.)
         return {...state, loading: false, images}
     })
 )

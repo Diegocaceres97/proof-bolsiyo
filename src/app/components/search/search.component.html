@@ -33,9 +33,3 @@
 <div type="button" class="btn btn-secondary" (click)="deleteCategory()" *ngIf="categoryQuery"  title="Eliminar">
   Categoria: {{ categoryQuery | titlecase }}
 </div>
-
-<h1 *ngIf="imagesSearched" >
-
-  <p *ngFor="let images of imagesSearched | pagination:page"> jeje</p>
-
-</h1>

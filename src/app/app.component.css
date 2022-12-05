@@ -9,4 +9,5 @@
     grid-auto-flow: dense;
     grid-auto-rows: 15rem;
     grid-template-columns: repeat(auto-fill, minmax(20rem,1fr));
+    row-gap: 15rem;
 }
