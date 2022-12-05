@@ -26,9 +26,8 @@ export class AppComponent implements OnInit {
       this.pageTotal = this.resultImages.length;
     });
   }
- 
-  resetPage(page:any){
-    console.log('worrrrkskks')
+
+  resetPage(page: any) {
     this.page = page;
   }
 

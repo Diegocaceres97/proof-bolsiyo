@@ -7,5 +7,5 @@ export interface AppState {
 }
 
 export const ROOT_REDUCERS: ActionReducerMap<AppState> = {
-    image: imagesReducer
-}
+  image: imagesReducer,
+};
